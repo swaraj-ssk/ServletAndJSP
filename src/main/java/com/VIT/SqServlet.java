@@ -3,6 +3,7 @@ package com.VIT;
 import java.io.IOException;
 import java.io.PrintWriter;
 
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -10,8 +11,16 @@ import javax.servlet.http.HttpServletResponse;
 public class SqServlet extends HttpServlet {
 	
 	public void doGet(HttpServletRequest req, HttpServletResponse res) throws IOException {
+		int k = 0;
+
+		// Accept cookie
+		Cookie cookies[] = req.getCookies(); // we are not getting single cookie
+		for(Cookie c : cookies) {
+			if(c.getName().equals("k")) {
+				k = Integer.parseInt(c.getValue());
+			}
+		}
 		
-		int k = (int) req.getAttribute("k");
 		k= k*k;
 		PrintWriter out = res.getWriter();	
 		out.println("Square of sum is " + k);

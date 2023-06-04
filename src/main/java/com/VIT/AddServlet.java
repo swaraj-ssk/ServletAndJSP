@@ -14,10 +14,12 @@ public class AddServlet extends HttpServlet {
 		int j = Integer.parseInt(req.getParameter("num2"));
 		
 		int k = i + j;
+	
 		
-		req.setAttribute("k", k);
+		//Cookie
+		Cookie cookie = new Cookie("k", k+""); // Pass k as string so k+""
+		res.addCookie(cookie); // add cookie to response
 		
-		RequestDispatcher rd = req.getRequestDispatcher("sq");
-		rd.forward(req, res);
+		res.sendRedirect("sq");
 	}
 }
