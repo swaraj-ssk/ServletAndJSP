@@ -2,8 +2,10 @@ package com.VIT;
 
 import java.io.IOException;
 
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.*;
 
+@WebServlet("/add")
 public class AddServlet extends HttpServlet {
 
 	public void doGet(HttpServletRequest req, HttpServletResponse res) throws IOException {
